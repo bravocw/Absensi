@@ -21,27 +21,16 @@ Route::group(['prefix' => 'auth'], function () {
     Auth::routes();
 });
 
-Route::group(['prefix' => 'excel', 'as' => 'excel.barang.', 'middleware' => 'auth'], function () {
-    Route::group(['prefix' => 'barang'], function () {
-        Route::get('/export', 'Commodities\CommodityExportImportController@export')->name('export');
-        Route::post('/import', 'Commodities\CommodityExportImportController@import')->name('import');
-    });
-});
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'absensi', 'middleware' => 'auth'], function () {
     Route::group(['prefix' => 'barang', 'as' => 'barang.'], function () {
-        Route::get('/print', 'Commodities\PdfController@generatePdf')->name('print');
-        Route::get('/print/{id}', "Commodities\PdfController@generatePdfOne")->name('print.one');
+        Route::get('/print', 'Absens\PdfController@generatePdf')->name('print');
     });
-
-    Route::get('/dashboard', 'HomeController@index')->name('home');
-    Route::resource('/barang', 'Commodities\CommodityController');
-    Route::resource('/bantuan-dana-operasional', 'SchoolOperationalAssistances\SchoolOperationalAssistance');
-    Route::resource('/ruang', 'CommodityLocations\CommodityLocationController');
-
-    Route::resource('/commodities/json', 'Commodities\Ajax\CommodityAjaxController');
-    Route::resource('/school-operational/json', 'SchoolOperationalAssistances\Ajax\SchoolOperationalAssistanceAjaxController');
-    Route::resource('/commodity-locations/json', 'CommodityLocations\Ajax\CommodityLocationAjaxController');
+    Route::get('/data', 'HomeController@index')->name('home');
+    Route::resource('/data', 'Absens\AbsenController');
+    Route::resource('/pengurus', 'Penguruss\PengurusController');
+    Route::resource('/barangs/json', 'Absens\Ajax\AbsenAjaxController');
+    Route::resource('/penguruss/json', 'Penguruss\Ajax\PengurusAjaxController');
 });
 
 // Route::group(['prefix' => 'commodities', 'as' => 'commodities.'], function () {

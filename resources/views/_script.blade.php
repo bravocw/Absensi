@@ -6,7 +6,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "commodities/json/" + id,
+                url: "barangs/json/" + id,
                 data: {
                     id: id,
                     _token: token
@@ -16,7 +16,7 @@
                     $("#modalLabel").html(data.data.item_code)
                     $("#item_code").val(data.data.item_code)
                     $("#register").val(data.data.register)
-                    $("#commodity_location_id").html(data.data.commodity_location_id)
+                    $("#barang_locations_id").html(data.data.barang_locations_id)
                     $("#name").html(data.data.name)
                     $("#brand").val(data.data.brand)
                     $("#material").val(data.data.material)

@@ -30,7 +30,7 @@
                 <b>Lokasi</b>
               </td>
               <td>:</td>
-              <td id="commodity_location_id"></td>
+              <td id="barang_locations_id"></td>
             </tr>
           </table>
         </div>
